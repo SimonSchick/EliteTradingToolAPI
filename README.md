@@ -155,7 +155,7 @@ number | SupplyAmount
 ## CommodityRoute ##
 
 Type           | Name
----------------| --------------------------
+---------------|---------------------------
 TimeDiffString | BuyLastUpdate
 string         | CommodityName
 string         | Destination
@@ -291,12 +291,12 @@ string  | SystemName
 
 
 
-Type                                                    | Name
---------------------------------------------------------|-------------------
-Query(same as search query but with SearchType added)   | 
-RepResult                                               | RepResult
-Array of SearchResultEntry                              | Result
-string(nullable)                                        | StartingSystem
+Type                                                  | Name
+------------------------------------------------------|-------------------
+Query(same as search query but with SearchType added) | 
+RepResult                                             | RepResult
+Array of SearchResultEntry                            | Result
+string(nullable)                                      | StartingSystem
 
 ### DataListSearchQuery ###
 
@@ -312,7 +312,7 @@ string         | SystemName
 ### Commodity ###
 
 Type    | Name
---------| -----------------------------------
+--------|------------------------------------
 number  | DistanceFromJumpIn
 number  | GalacticAveragePrice
 number  | Id
@@ -326,14 +326,14 @@ string  | StationTypeName("CoriolisStarport")
 ### DataListSearchResult ###
 
 Type               | Name
--------------------| -----------------------------------
+-------------------|------------------------------------
 Array of Commodity | CommodityList
 number             | QueryType(StationSells -> 2, StationBuys -> 1)
 System(nullable)   | System
 
 ### System ###
 Type   | Name
--------| ------
+-------|-------
 number | Id
 string | Name
 
@@ -375,7 +375,7 @@ string       | StartSystem
 Extends CommodityRoute & CommodityResult/LastUpdate
 
 Type    | Name
-------- | ----------------------------
+--------|-----------------------------
 string  | BuyUpdatedBy
 boolean | DestinationPermitRequired
 string  | DestinationStationAllegiance
@@ -396,19 +396,19 @@ number  | TotalProfit
 ### TradeCalculatorResult ###
 
 Type                                | Name
-------------------------------------| -------
+------------------------------------|--------
 Array of TradeCalculatorResultEntry | Results
 RepResult                           | RepResult
 
 ### RareTradeQuery ###
 Type   | Name
------- | ---------------
+-------|----------------
 string | CurrentLocation
 
 ### RareTradeResult ###
 
 Type   | Name
------- | -------------------
+-------|--------------------
 string | Allegiance
 float  | Distance
 float  | DistanceFromJumpIn
@@ -424,16 +424,35 @@ Type   | Name
 number | DestinationStationId
 number | SourceStationId
 
+### StationBasicInfo ###
+
+Type    | Name
+--------|--------------------
+string  | Station
+number  | StationId
+string? | System
+number  | SystemId
+
+### StationSearchResult ###
+
+Type             | Name
+-----------------|--------------------
+string(nullable) | Message
+Array<Station>   | Stations
+boolean          | Success
+
 # API #
 
 ## RARE TRADE SEARCH ##
 
-ACTION           | API-CALL                   | IN                  | OUT
------------------|----------------------------|---------------------|----------------------
-SEARCH           | /Search                    | SearchQuery         | SearchQueyResult
-DATA LIST        | /DataLists                 | DataListSearchQuery | DataListSearchResult
-AUTOCOMPLETE     | /GetStarData?query=        | STRING              | System
-FIND TRADES      | /FindTrades                | TradeFindQuery      | TradeFindSearchResult
-TRADE CALCULATOR | /Calculator                | CalculatorQuery     | TradeCalculatorResult
-RARE TRADES      | /RareTrades                | RareTradeQuery      | RareTradeResult
-FIND BEST TRACE  | /FindHighestTradeCommodity | HighestTradeQuery   | CommodityRoute
+ACTION              | METHOD | API-CALL                      | IN                  | OUT
+--------------------|--------|-------------------------------|---------------------|----------------------
+SEARCH              | POST   | /Search                        | SearchQuery         | SearchQueyResult
+DATA LIST           | POST   | /DataLists                    | DataListSearchQuery | DataListSearchResult
+AUTOCOMPLETE        | GET    | /GetStarData?query=           | STRING              | System
+FIND TRADES         | POST   | /FindTrades                   | TradeFindQuery      | TradeFindSearchResult
+TRADE CALCULATOR    | POST   | /Calculator                   | CalculatorQuery     | TradeCalculatorResult
+RARE TRADES         | POST   | /RareTrades                   | RareTradeQuery      | RareTradeResult
+FIND BEST TRACE     | POST   | /FindHighestTradeCommodity    | HighestTradeQuery   | CommodityRoute
+STATIONS IN SYSTEM  | GET    | /StationsInSystem?systemName= | STRING              | StationSearchResult
+
