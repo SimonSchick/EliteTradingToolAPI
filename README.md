@@ -301,12 +301,12 @@ string(nullable)                                        | StartingSystem
 ### DataListSearchQuery ###
 
 Type           | Name
--------------- | -
-stringId | CommodotyId
-boolean | ExcludeOutposts
-string | QueryType(StationBuys/StationSells)
-stringNumber | SearchRange
-string | SystemName
+---------------|------------------------------------
+stringId       | CommodotyId
+boolean        | ExcludeOutposts
+string         | QueryType(StationBuys/StationSells)
+stringNumber   | SearchRange
+string         | SystemName
 
 
 ### Commodity ###
