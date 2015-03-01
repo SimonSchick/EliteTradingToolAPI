@@ -417,15 +417,23 @@ string | Location
 number | Price
 string | RareTrade
 
+### HighestTradeQuery ###
+
+Type   | Name
+------ | -------------------
+number | DestinationStationId
+number | SourceStationId
+
 # API #
 
 ## RARE TRADE SEARCH ##
 
-ACTION           | API-CALL                  | IN                  | OUT
------------------|---------------------------|---------------------|----------------------
-SEARCH           | /Search                   | SearchQuery         | SearchQueyResult
-DATA LIST        | /DataLists                | DataListSearchQuery | DataListSearchResult
-AUTOCOMPLETE     | /GetStarData?query=       | STRING              | System
-FIND TRADES      | /FindTrades               | TradeFindQuery      | TradeFindSearchResult
-TRADE CALCULATOR | /Calculator               | CalculatorQuery     | TradeCalculatorResult
-RARE TRADES      | /RareTrades               | RareTradeQuery      | RareTradeResult
+ACTION           | API-CALL                   | IN                  | OUT
+-----------------|----------------------------|---------------------|----------------------
+SEARCH           | /Search                    | SearchQuery         | SearchQueyResult
+DATA LIST        | /DataLists                 | DataListSearchQuery | DataListSearchResult
+AUTOCOMPLETE     | /GetStarData?query=        | STRING              | System
+FIND TRADES      | /FindTrades                | TradeFindQuery      | TradeFindSearchResult
+TRADE CALCULATOR | /Calculator                | CalculatorQuery     | TradeCalculatorResult
+RARE TRADES      | /RareTrades                | RareTradeQuery      | RareTradeResult
+FIND BEST TRACE  | /FindHighestTradeCommodity | HighestTradeQuery   | CommodityRoute
